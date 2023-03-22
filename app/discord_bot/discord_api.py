@@ -1,12 +1,20 @@
 from dotenv import load_dotenv
 import discord
 import os
+import json
 
 from app.chatgpt_ai.openai import chatgpt_response
 
 load_dotenv()
 
 discord_token = os.getenv('DISCORD_TOKEN')
+
+
+def set_default(obj):
+    if isinstance(obj, set):
+        return list(obj)
+    raise TypeError
+
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -27,6 +35,7 @@ class MyClient(discord.Client):
 
 
         if command == '!ai' or command == '!bot' or command == '!chatgat':
+
             bot_response = chatgpt_response(prompt=user_message)
             await message.channel.send(f"{bot_response}")
 
