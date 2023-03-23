@@ -3,13 +3,11 @@ import discord
 import os
 import json
 
-from app.chatgpt_ai.openai import chatgpt_response
+from app.chatgpt_ai.openai import chatgpt_response, dalle_response
 
 load_dotenv()
 
 discord_token = os.getenv('DISCORD_TOKEN')
-
-
 
 class MyClient(discord.Client):
     conversation = [{'role': 'system', 'content': 'You are an advanced assistant. Your job is to answer the question as short and concise as possible.'}]
@@ -21,7 +19,7 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
         command, user_message = None, None
-        for text in ['!ai', '!bot', '!gpt', '!session']:
+        for text in ['!ai', '!bot', '!gpt', '!session', '!image']:
             if message.content.startswith(text):
                 arr = message.content.split(' ');
                 command=arr[0]
@@ -37,6 +35,9 @@ class MyClient(discord.Client):
             MyClient.conversation.append({'role':'user', 'content':user_message})
             MyClient.conversation = chatgpt_response(messages=MyClient.conversation)
             await message.channel.send(f"{MyClient.conversation[-1]['content']}")
+        elif command == '!image':
+            dalle_res = dalle_response(user_message)
+            await message.channel.send(f"{dalle_res}")
 
 
 intents = discord.Intents.default()
