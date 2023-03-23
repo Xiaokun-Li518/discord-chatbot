@@ -7,15 +7,15 @@ The chatbot can respond to messages starting with '!ai', '!bot', or '!gpt' with 
 
 1. Clone this repository and navigate to the project directory.
 2. Install the dependencies:
-   '''
+   ```
    pip install -r requirements.txt
-   '''
+   ```
 
 3. Create a .env file in the root directory and add your Discord bot token:
-    '''
+    ```
     DISCORD_TOKEN=your_token_here
     CHATGPT_API_KEY=your_token_here
-    '''
+    ```
 
 4. Start the bot by running python bot.py in the terminal.
 
