@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import discord
 import os
+from pyrandmeme import *
+
 
 from app.chatgpt_ai.openai import chatgpt_response, dalle_response
 
@@ -18,7 +20,7 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
         command, user_message = None, None
-        for text in ['!ai', '!bot', '!gpt', '!session', '!image']:
+        for text in ['!ai', '!bot', '!gpt', '!session', '!image', '!meme']:
             if message.content.startswith(text):
                 arr = message.content.split(' ');
                 command=arr[0]
@@ -37,6 +39,8 @@ class MyClient(discord.Client):
         elif command == '!image':
             dalle_res = dalle_response(user_message)
             await message.channel.send(f"{dalle_res}")
+        elif command == '!meme':
+            await message.channel.send(embed=await pyrandmeme())
 
 
 intents = discord.Intents.default()
