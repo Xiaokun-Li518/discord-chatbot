@@ -1,7 +1,6 @@
 from dotenv import load_dotenv
 import discord
 import os
-import json
 
 from app.chatgpt_ai.openai import chatgpt_response, dalle_response
 
