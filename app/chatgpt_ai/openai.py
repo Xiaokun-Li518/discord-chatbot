@@ -28,8 +28,10 @@ def dalle_response(prompt):
         response = openai.Image.create(
             prompt=prompt,
             n=1,
-            size="1024*1024"
+            size="1024x1024"
         ) 
+        response_dict = response.get("data")
+        return response_dict[0].url
     except:
         im = ['https://media.tenor.com/3p5KHNlNpVYAAAAC/flip-off.gif', 
               'https://media.tenor.com/tP0M0uP3apQAAAAd/no-fuck-off-fuck-off.gif',
@@ -44,6 +46,4 @@ def dalle_response(prompt):
         random_int = random.randint(0, 8)
         return im[random_int]
 
-    response_dict = response.get("data")
-    return response_dict[0].url
         
