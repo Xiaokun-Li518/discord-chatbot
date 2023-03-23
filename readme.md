@@ -17,7 +17,7 @@ The chatbot can respond to messages starting with '!ai', '!bot', or '!gpt' with 
     CHATGPT_API_KEY=your_token_here
     ```
 
-4. Start the bot by running python bot.py in the terminal.
+4. Start the bot by running 'python run.py' in the terminal.
 
 # Usage
 
