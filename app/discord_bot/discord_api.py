@@ -32,8 +32,12 @@ class MyClient(discord.Client):
     async def on_message (self, message):
         print (message.content)
         print (message.author)
+        author = ''
+        author += str(message.author)
         if message.author == self.user:
             return
+        # elif author == 'Xiaokun_Li#7031':
+        #     await message.channel.send('Please shut the fuck up!!')
 
         command, user_message = None, None
         for text in ['!ai', '!bot', '!gpt', '!session', '!image', '!meme', '!joke', '!usage', '!lucky']:
@@ -49,8 +53,6 @@ class MyClient(discord.Client):
             await message.channel.send(f"{MyClient.conversation[-1]['content']}")
         elif command == '!lucky':
             idea, dalle_res = await get_idea()
-            while (len(dalle_res) == 0):
-                await asyncio.sleep(1)
             await message.channel.send(f'{dalle_res}')
             await message.channel.send(f'{idea}')
 
