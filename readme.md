@@ -4,7 +4,7 @@ The chatbot can respond to messages starting with ```!ai```, ```!bot```, or ```!
 
 
 ## Getting Started
-### optional I
+### Optiona I
 1. Clone this repository and navigate to the project directory.
 2. Install the dependencies:
    ```
@@ -19,7 +19,7 @@ The chatbot can respond to messages starting with ```!ai```, ```!bot```, or ```!
 
 4. Start the bot by running ```python run.py``` in the terminal.
 
-### option II 
+### Option II 
 1. Clone this repository and navigate to the project directory.
 2. Create a .env file in the root directory and add your Discord bot token and OpenAi Api Key:
     ```
